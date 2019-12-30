@@ -21,4 +21,4 @@ npm start
 ```
 
 ### 3. Snapshot of created project in MacOS ###
-<img src="img-wiki/create-app.png"/>
+<img src="my-app/public/create-app.png"/>
