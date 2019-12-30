@@ -68,3 +68,5 @@ To render a React element into a root DOM node, pass both to **ReactDOM.render()
 const element = <h1>Hello, world</h1>;
 ReactDOM.render(element, document.getElementById('root'));
 ```
+## what is export default App ##
+**The export statement is used when creating JavaScript modules to export functions, objects, or primitive values from the module so they can be used by other programs with the import statement.**
