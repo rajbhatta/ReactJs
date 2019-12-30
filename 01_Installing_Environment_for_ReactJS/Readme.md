@@ -101,4 +101,29 @@ This is used to import this function in another script file
 import HelloWorld from './HelloWorld';
 ```
 
+## What is Function component(Stateless component) in ReactJS ##
+Function component is a Javascript function that accept properties and return HTML
+```
+import React from 'react';
+function App() {
+  const greeting = 'Hello Function Component!';
+  return <h1>{greeting}</h1>;
+}
+export default App; //To make it accessible from other JS
+```
 
+## What is class component(Statefull component) in React ##
+They are more complex than functional components including constructors, life-cycle methods, render( ) function and state (data) management. In the example below, we can see how a simple class component looks like:
+```
+import React, { Component } from 'react';
+import './App.css';
+
+class App extends Component
+{
+  render(){
+   return(<h3>Hello Raj Bhatta</h3>);
+  }
+}
+
+export default App;
+```
