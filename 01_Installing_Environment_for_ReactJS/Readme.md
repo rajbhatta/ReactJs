@@ -53,3 +53,18 @@ class App extends Component
 export default App;
 ```
 <img src="my-app/public/main-js.png"/>
+
+## Rendering Elements in ReactJS ##
+Let’s say there is a <div> somewhere in your HTML file:
+ ```
+<div id="root"></div>
+```
+We call this a “root” DOM node because everything inside it will be managed by React DOM.
+  
+Applications built with just React usually have a single root DOM node. If you are integrating React into an existing app, you may have as many isolated root DOM nodes as you like.
+
+To render a React element into a root DOM node, pass both to **ReactDOM.render():**
+```
+const element = <h1>Hello, world</h1>;
+ReactDOM.render(element, document.getElementById('root'));
+```
