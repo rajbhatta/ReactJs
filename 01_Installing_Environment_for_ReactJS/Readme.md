@@ -36,8 +36,9 @@ We specify the root component  that is App component and DOM element which will 
 ReactDOM.render(<App />, document.getElementById('root'));
 ```
 which is defined inside index.js
+<img src="my-app/public/app-img.png"/>
 
-**3. App component represents the view that we see in the browser ** 
+**3. App component represents the view that we see in the browser** 
 ```
 import React, { Component } from 'react';
 import './App.css';
@@ -51,4 +52,4 @@ class App extends Component
 
 export default App;
 ```
-<img src="my-app/public/app-img.png"/>
+<img src="my-app/public/main-img.png"/>
