@@ -19,3 +19,6 @@ npx create-react-app my-app
 cd my-app
 npm start
 ```
+
+### 3. Snapshot of created project in MacOS ###
+<img src="img-wiki/create-app.png"/>
