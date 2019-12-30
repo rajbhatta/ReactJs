@@ -52,4 +52,4 @@ class App extends Component
 
 export default App;
 ```
-<img src="my-app/public/main-img.png"/>
+<img src="my-app/public/main-js.png"/>
