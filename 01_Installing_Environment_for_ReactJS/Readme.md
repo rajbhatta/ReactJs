@@ -69,4 +69,21 @@ const element = <h1>Hello, world</h1>;
 ReactDOM.render(element, document.getElementById('root'));
 ```
 ## what is export default App ##
-**The export statement is used when creating JavaScript modules to export functions, objects, or primitive values from the module so they can be used by other programs with the import statement.**
+The export statement is used when creating JavaScript modules to export functions, objects, or primitive values from the module so they can be used by other javascript class or file with the import statement.
+
+export default is used to export a single class, function or primitive from a script file.
+
+The export can also be written as
+```
+export default class HelloWorld extends React.Component {
+  render() {
+    return <p>Hello, world!</p>;
+  }
+}
+```
+This is used to import this function in another script file
+```
+import HelloWorld from './HelloWorld';
+```
+
+
