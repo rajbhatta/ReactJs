@@ -80,6 +80,21 @@ export default class HelloWorld extends React.Component {
     return <p>Hello, world!</p>;
   }
 }
+
+or
+
+import React, { Component } from 'react';
+import './App.css';
+
+class HelloWorld extends Component
+{
+  render(){
+   return(<p>Hello, world</p>);
+  }
+}
+
+export default App;
+
 ```
 This is used to import this function in another script file
 ```
