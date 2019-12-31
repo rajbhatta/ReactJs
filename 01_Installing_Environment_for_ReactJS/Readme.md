@@ -25,21 +25,21 @@ npm start
 
 ## 3.1 Folder Directory in ReactJS ##
 **1. public folder:** Work with index.html for single page application and it is starting point. Where we have defined 
-```
+```html
 <div id="root"></div> 
 ```
 <img src="my-app/public/index-img.png"/>
 
 **2. src:** starting poing 
 We specify the root component  that is App component and DOM element which will be controlled by react app. In our case
-```
+```js
 ReactDOM.render(<App />, document.getElementById('root'));
 ```
 which is defined inside index.js
 <img src="my-app/public/app-img.png"/>
 
 **3. App component represents the view that we see in the browser** 
-```
+```js
 import React, { Component } from 'react';
 import './App.css';
 
@@ -56,7 +56,7 @@ export default App;
 
 ## Rendering Elements in ReactJS ##
 Let’s say there is a <div> somewhere in your HTML file:
- ```
+ ```html
 <div id="root"></div>
 ```
 We call this a “root” DOM node because everything inside it will be managed by React DOM.
@@ -64,7 +64,7 @@ We call this a “root” DOM node because everything inside it will be managed 
 Applications built with just React usually have a single root DOM node. If you are integrating React into an existing app, you may have as many isolated root DOM nodes as you like.
 
 To render a React element into a root DOM node, pass both to **ReactDOM.render():**
-```
+```js
 const element = <h1>Hello, world</h1>;
 ReactDOM.render(element, document.getElementById('root'));
 ```
@@ -74,7 +74,7 @@ The export statement is used when creating JavaScript modules to export function
 export default is used to export a single class, function or primitive from a script file.
 
 The export can also be written as
-```
+```js
 export default class HelloWorld extends React.Component {
   render() {
     return <p>Hello, world!</p>;
@@ -103,7 +103,7 @@ import HelloWorld from './HelloWorld';
 
 ## What is Function component(Stateless component) in ReactJS ##
 Function component is a Javascript function that accept properties and return HTML
-```
+```js
 import React from 'react';
 function App() {
   const greeting = 'Hello Function Component!';
@@ -114,7 +114,7 @@ export default App; //To make it accessible from other JS
 
 ## What is class component(Statefull component) in React ##
 They are more complex than functional components including constructors, life-cycle methods, render( ) function and state (data) management. In the example below, we can see how a simple class component looks like:
-```
+```js
 import React, { Component } from 'react';
 import './App.css';
 
