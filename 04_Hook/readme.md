@@ -152,14 +152,12 @@ const Message = () => {
     </div>
   );
 };
-
-Try it here.
 ```
 
 However, this update function doesn’t update the value right away. Rather, it enqueues the update operation. Then, after re-rendering the component, the argument of useState will be ignored and this function will return the most recent value.
 
 If you use the previous value to update state, you must pass a function that receives the previous value and returns the new value:
-
+```js
 const Message = () => {
   const [message, setMessage] = useState( '' );
 
@@ -180,14 +178,14 @@ const Message = () => {
     </div>
   );
 };
-Try it here.
+```
 
 However, there are two important things to know about updates.
 
 First, if you use the same value as the current state to update the state (React uses Object.is for comparing), React won’t trigger a re-render.
 
 For example, when working with objects, it’s easy to make the following mistake:
-
+```js
 const Message = () => {
   const [messageObj, setMessage] = useState({ message: '' });
 
@@ -208,22 +206,23 @@ const Message = () => {
   </div>
   );
 };
-Try it here.
+```
 
 Instead of creating a new object, the above example mutates the existing state object. To React, that’s the same object.
 
 To make it work, a new object must be created:
-
+```js
 onChange={e => {
   const newMessageObj = { message: e.target.value };
   setMessage(newMessageObj); // Now it works
 }}
+```
 This leads us to the second important thing you need to remember.
 
 When you update a state variable, unlike this.setState in a component class, the function returned by useState does not automatically merge update objects, it replaces them.
 
 Following the previous example, if we add another property to the message object (id):
-
+```js
 const Message = () => {
   const [messageObj, setMessage] = useState({ message: '', id: 1 });
 
@@ -244,18 +243,19 @@ const Message = () => {
   </div>
   );
 };
+```
 The new property is lost.
 
-Try it here.
 
 You can replicate this behavior by using the function argument and the object spread syntax:
-
+```js
 onChange={e => {
   const val = e.target.value;
   setMessage(prevState => {
     return { ...prevState, message: val }
   });
 }}
+```
 This will have the same result as Object.assign, the ...prevState part will get all of the properties of the object and the message: val part will overwrite the message property.
 
 For this reason, the React documentation recommends splitting the state into multiple state variables based on which values tend to change together.
@@ -277,7 +277,7 @@ useState follows the same rules that all hooks do:
 Only call hooks at the top level
 Only call hooks from React functions
 The second rule is easy to follow. Don’t use useState in a class component:
-
+```js
 class App extends React.Component {
   render() {
     const [message, setMessage] = useState( '' );
@@ -289,8 +289,9 @@ class App extends React.Component {
     );
   }
 }
+```
 Or regular JavaScript functions (not called inside a functional component):
-
+```js
 function getState() {
   const messageState = useState( '' );
   return messageState;
@@ -299,18 +300,20 @@ const [message, setMessage] = getState();
 const Message = () => {
  /* ... */
 }
+```
 You’ll get an error.
 
 The first rule means that, even inside functional components, you shouldn’t call useState in loops, conditions, or nested functions because React relies on the order in which useState functions are called to get the correct value for a particular state variable.
 
 In that regard, the most common mistake is to wrap useState calls in a conditional statement (they won’t be executed all the time):
-
+```js
 if (condition) { // Sometimes it will be executed, making the order of the useState calls change
   const [message, setMessage] = useState( '' );
   setMessage( aMessage );  
 }
 const [list, setList] = useState( [] );
 setList( [1, 2, 3] );
+```
 A functional component can have many calls to useState or other hooks. Each hook is stored in a list, and there’s a variable that keeps track of the currently executed hook.
 
 When useState is executed, the state of the current hook is read (or initialized during the first render), and then, the variable is changed to point to the next hook. That’s why it is important to always maintain the hook calls in the same order, otherwise, a value belonging to another state variable could be returned.
