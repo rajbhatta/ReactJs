@@ -663,7 +663,10 @@ Headline.defaultProps = {
 };
 export default App;
 ```
-Note that you can also use the default assignment when destructuring the value from the props in the function signature (e.g. const Headline = ({ headline = 'Hello Component' }) =>) or the || operator within the Function Component's body (e.g. return <h1>{headline || 'Hello Component'}</h1>;).
+Note that you can also use the default assignment when destructuring the value from the props in the function signature (e.g. const Headline = ({ headline = 'Hello Component' }) =>) or the || operator within the Function Component's body (e.g. return 
+```
+<h1>{headline || 'Hello Component'}</h1>;).
+```
 
 However, if you really want to go all-in with strongly typed components in React, you have to check out TypeScript which is briefly shown in the next section.
 
