@@ -73,7 +73,8 @@ But since it wasn’t set anywhere, this.state will be null, so this example isn
 
 Using lifecycle hooks
 
-Class components can define functions that will execute during the component’s lifecycle. There are a total of seven lifecycle methods: ```
+Class components can define functions that will execute during the component’s lifecycle. There are a total of seven lifecycle methods: 
+```
 componentWillMount, componentDidMount, componentWillReceiveProps, shouldComponentUpdate, componentWillUpdate, componentDidUpdate, and componentWillUnmount. 
 ```
 For the sake of brevity, only one will be demonstrated.
