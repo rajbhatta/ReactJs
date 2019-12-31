@@ -94,6 +94,15 @@ class MyComponent extends Component {
   }
 }
 ```
-this.state should not be assigned directly. Use this.setState, instead.
+```js
+this.state
+```
+should not be assigned directly. Use 
+```js
+this.setState, instead.
+```
 
-this.setState cannot be used in render.
+```js
+this.setState 
+```
+cannot be used in render.
