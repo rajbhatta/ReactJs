@@ -10,7 +10,7 @@ function App() {
 }
 export default App;
 ```
- ## Render a React Component inside a Function Component##
+ ## Render a React Component inside a Function Component ##
   We can define another component and render it as HTML element with JSX within the other component's body:
 ```
 import React from 'react';
