@@ -1,5 +1,5 @@
 ## Working with Props in React JS ##
-To pass the data as params (parameters) from one React component to another component? That's because you don't want to have a component rendering static data, but pass dynamic data to your component instead. That's where React's props come into play. 
+To pass the data as params (parameters) from one React component to another component we use Props. That's because you don't want to have a component rendering static data, but pass dynamic data to your component instead. That's where React's props come into play. 
 
 ### Props in Functional component ###
 **Note:** If we need to use Props in functional component then we have to use 
