@@ -61,45 +61,50 @@ class Message extends React.Component {
 }
 ```
 The useState hook allows you to declare only one state variable (of any type) at a time, like this:
-
+```js
 import React, { useState } from 'react';
 
 const Message= () => {
    const messageState = useState( '' );
    const listState = useState( [] );
 }
+```
 useState takes the initial value of the state variable as an argument. You can pass it directly, as shown in the previous example, or use a function to lazily initialize the variable (useful when the initial state is the result of an expensive computation):
-
+```js
 const Message= () => {
    const messageState = useState( () => expensiveComputation() );
    /* ... */
 }
+```
 The initial value will be assigned only on the initial render (if it’s a function, it will be executed only on the initial render).
 
 In subsequent renders (due to a change of state in the component or a parent component), the argument of the useState hook will be ignored and the current value will be retrieved.
 
 It is important to keep this in mind because, for example, if you want to update the state based on the new properties the component receives:
-
+```js
 const Message= (props) => {
    const messageState = useState( props.message );
    /* ... */
 }
+```
 Using useState alone won’t work because its argument is used the first time only, not every time the property changes (look here for the right way to do this).
 
 But useState doesn’t return just a variable as the previous examples imply. It returns an array, where the first element is the state variable and the second element is a function to update the value of the variable:
-
+```js
 const Message= () => {
    const messageState = useState( '' );
    const message = messageState[0]; // Contains ''
    const setMessage = messageState[1]; // It’s a function
 }
+```
 Usually, you’ll use array destructuring to simplify the code shown above:
-
+```js
 const Message= () => {
    const [message, setMessage]= useState( '' );
 }
+```
 This way, you can use the state variable in the functional component like any other variable:
-
+```js
 const Message = () => {
   const [message, setMessage] = useState( '' );
 
@@ -109,12 +114,13 @@ const Message = () => {
     </p>
   );
 };
+```
 But why does useState return array?
 
 Because compared to an object, an array is more flexible and easy to use.
 
 If the method returned an object with a fixed set of properties, you wouldn’t be able to assign custom names in an easy way. You’d have to do something like this (assuming the properties of the object are state and setState):
-
+```js
 // Without using object destructuring
 const messageState = useState( '' );
 const message = messageState.state;
@@ -124,11 +130,11 @@ const setMessage = messageState
 const { state: message, setState: setMessage } = useState( '' );
 const { state: list, setState: setList } = useState( [] );
 Updating state
-
+```
 The second element returned by useState is a function that takes a new value to update the state variable.
 
 Here’s an example that uses a text box to update the state variable on every change:
-
+```js
 const Message = () => {
   const [message, setMessage] = useState( '' );
 
@@ -146,7 +152,9 @@ const Message = () => {
     </div>
   );
 };
+
 Try it here.
+```
 
 However, this update function doesn’t update the value right away. Rather, it enqueues the update operation. Then, after re-rendering the component, the argument of useState will be ignored and this function will return the most recent value.
 
