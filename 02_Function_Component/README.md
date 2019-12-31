@@ -2,7 +2,7 @@
 REACT FUNCTION COMPONENT EXAMPLE
 
 Let's start with a simple example of a Functional Component in React defined as App which returns JSX:
-```
+```js
 import React from 'react';
 function App() {
   const greeting = 'Hello Function Component!';
