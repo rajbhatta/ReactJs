@@ -1,4 +1,4 @@
-## Working with HOOk (State in Function component)- useState ##
+## Working with Hooks (State in Function component)- useState ##
 useState is a hook that allows you to have state variables in functional components.
 
 There are two types of components in React, class and functional components.
@@ -260,7 +260,7 @@ This will have the same result as Object.assign, the ...prevState part will get 
 
 For this reason, the React documentation recommends splitting the state into multiple state variables based on which values tend to change together.
 
-Track state and user interaction with components
+### Track state and user interaction with components ###
 
 It’s important to validate that everything works in your production React app as expected. If you’re interested in monitoring and tracking issues related to components AND seeing how users interact with specific components, try LogRocket. LogRocket Dashboard Free Trial Bannerhttps://logrocket.com/signup/
 
@@ -268,9 +268,8 @@ LogRocket is like a DVR for web apps, recording literally everything that happen
 
 In addition, LogRocket logs all actions and state from your Redux stores. LogRocket instruments your app to record requests/responses with headers + bodies. It also records the HTML and CSS on the page, recreating pixel-perfect videos of even the most complex single-page apps.
 
-Modernize how you debug your React apps – Start monitoring for free.
 
-Rules for using the state hook
+## Rules for using the state hook ##
 
 useState follows the same rules that all hooks do:
 
@@ -319,19 +318,17 @@ A functional component can have many calls to useState or other hooks. Each hook
 When useState is executed, the state of the current hook is read (or initialized during the first render), and then, the variable is changed to point to the next hook. That’s why it is important to always maintain the hook calls in the same order, otherwise, a value belonging to another state variable could be returned.
 
 In general terms, here’s an example of how this works step by step:
-
-React initializes the list of hooks and the variable that keeps track of the current hook
-React calls your component for the first time
-React finds a call to useState, creates a new hook object (with the initial state), changes the current hook variable to point to this object, adds the object to the hooks list, and return the array with the initial state and the function to update it
-React finds another call to useState and repeats the actions of the previous step, storing a new hook object and changing the current hook variable
+1. React initializes the list of hooks and the variable that keeps track of the current hook
+2. React calls your component for the first time
+3. React finds a call to useState, creates a new hook object (with the initial state), changes the current hook variable to point to this object, adds the object to the hooks list, and return the array with the initial state and the function to update it
+4. React finds another call to useState and repeats the actions of the previous step, storing a new hook object and changing the current hook variable
 The component state changes
-React sends the state update operation (performed by the function returned by useState) to a queue to be processed
-React determines it needs to re-render the component
-React resets the current hook variable and calls your component
-React finds a call to useState, but this time, since there’s already a hook at the first position of the list of hooks, it just changes the current hook variable and returns the array with the current state and the function to update it
-React finds another call to useState and since a hook exists in the second position, once again, it just changes the current hook variable and returns the array with the current state and the function to update it
+5. React sends the state update operation (performed by the function returned by useState) to a queue to be processed
+6. React determines it needs to re-render the component
+7. React resets the current hook variable and calls your component
+8. React finds a call to useState, but this time, since there’s already a hook at the first position of the list of hooks, it just changes the current hook variable and returns the array with the current state and the function to update it
+8. React finds another call to useState and since a hook exists in the second position, once again, it just changes the current hook variable and returns the array with the current state and the function to update it
 If you like to read code, ReactFiberHooks is the class where you can learn how hooks work under the hood.
 
-Conclusion
-
+## Conclusion ##
 useState is a hook (function) that allows you to have state variables in functional components. You pass the initial state to this function, and it returns a variable with the current state value (not necessarily the initial state) and another function to update this value.
