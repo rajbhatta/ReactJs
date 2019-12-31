@@ -12,7 +12,7 @@ export default App;
 ```
  ## 2. Render a React Component inside a Function Component ##
   We can define another component and render it as HTML element with JSX within the other component's body:
-```
+```js
 import React from 'react';
 function App() {
   return <Headline />;
@@ -26,7 +26,7 @@ export default App;
 
 ## 3. REACT FUNCTION COMPONENT: PROPS ##
 Props are the React Function Component's parameters. 
-```
+```js
 import React from 'react';
 function App() {
   const greeting = 'Hello Function Component!';
@@ -41,7 +41,7 @@ export default App;
 ## 4. REACT ARROW FUNCTION COMPONENT ##
 JavaScript function can be expressed as lambda (arrow function). 
 
-```
+```js
 import React from 'react';
 const App = () => {
   const greeting = 'Hello Function Component!';
@@ -58,7 +58,7 @@ Every component we have seen so far can be called Stateless Function Component. 
 
 ## 6. REACT FUNCTION COMPONENT: STATE ##
 React Hooks made it possible to use state (and side-effects) in Function Components. Finally we can create a React Function Component with state! Let's say we moved all logic to our other Function Component and don't pass any props to it:
-```
+```js
 import React from 'react';
 const App = () => {
   return <Headline />;
@@ -70,7 +70,7 @@ const Headline = () => {
 export default App;
 ```
 So far, a user of this application has no way of interacting with the application and thus no way of changing the greeting variable. The application is static and not interactive at all. State is what makes React components interactive; and exciting as well. A React Hook helps us to accomplish it:
-```
+```js
 import React, { useState } from 'react';
 const App = () => {
   return <Headline />;
@@ -86,7 +86,7 @@ export default App;
 The useState hook takes an initial state as parameter and returns an array which holds the current state as first item and a function to change the state as second item. We are using JavaScript array destructuring to access both items with a shorthand expression. In addition, the destructuring let's us name the variables ourselves.
 
 Let's add an input field to change the state with the setGreeting() function:
-```
+```js
 import React, { useState } from 'react';
 const App = () => {
   return <Headline />;
@@ -116,7 +116,7 @@ In the previous example you have used an onChange event handler for the input fi
 Note: The onChange event handler is only one of the handlers for HTML form elements. For instance, a button would offer an onClick event handler to react on click events.
 
 So far, we have used an arrow function to inline the event handler for out input field. What about extracting it as standalone function inside the component? It would become a named function then:
-```
+```js
 import React, { useState } from 'react';
 const App = () => {
   return <Headline />;
@@ -139,7 +139,7 @@ We have used an arrow function to define the function within the component. If y
 
 ## 8. REACT FUNCTION COMPONENT: CALLBACK FUNCTION ##
 Everything happens in our Child Function Component. There are no props passed to it, even though you have seen before how a string variable for the greeting can be passed from the Parent Component to the Child Component. Is it possible to pass a function to a component as prop as well? Somehow it must be possible to call a component function from the outside! Let's see how this works:
-```
+```js
 import React, { useState } from 'react';
 const App = () => {
   const [greeting, setGreeting] = useState(
@@ -161,7 +161,7 @@ export default App;
 That's all to it. You can pass a function to a Child Component and handle what happens up in the Parent Component. You could also execute something in between in the Child Component (Headline component) for the onChangeHeadline function -- like trimming the value -- to add extra functionality inside the Child Component. That's how you would be able to call a Child Component's function from a Parent Component.
 
 Let's take this example one step further by introducing a Sibling Component for the Headline component. It could be an abstract Input component:
-```
+```js
 import React, { useState } from 'react';
 const App = () => {
   const [greeting, setGreeting] = useState(
@@ -192,7 +192,7 @@ I find this is a perfect yet minimal example to illustrate how to pass functions
 
 It's shouldn't happen often, but I have heard people asking me this question. How would you override a component's function? You need to take the same approach as for overriding any other passed prop to a component by giving it a default value:
 
-```
+```js
 import React from 'react';
 const App = () => {
   const sayHello = () => console.log('Hello');
@@ -210,7 +210,7 @@ const Button = ({ handleClick }) => {
 export default App;
 ```
 You can assign the default value in the function signature for the destructuring as well:
-```
+```js
 import React from 'react';
 const App = () => {
   const sayHello = () => console.log('Hello');
@@ -224,7 +224,7 @@ const Button = ({ handleClick = () => console.log('Default') }) => (
 export default App;
 ```
 You can also give a React Function Component default props -- which is another alternative:
-```
+```js
 import React from 'react';
 const App = () => {
   const sayHello = () => console.log('Hello');
@@ -245,7 +245,7 @@ All of these approaches can be used to define default props (in this case a defa
 ## 11. Async Function in Component with React ##
 
 Another special case may be an async function in a React component. But there is nothing special about it, because it doesn't matter if the function is asynchronously executed or not:
-```
+```js
 import React from 'react';
 const App = () => {
   const sayHello = () =>
@@ -260,7 +260,7 @@ const Button = ({ handleClick }) => (
 export default App;
 ```
 The function executes delayed without any further instructions from your side within the component. The component will also rerender asynchronously in case props or state have changed. Take the following code as example to see how we set state with a artificial delay by using setTimeout:
-```
+```js
 import React, { useState } from 'react';
 const App = () => {
   const [count, setCount] = useState(0);
@@ -299,7 +299,7 @@ Read more about how to fetch data with Function Components with React Hooks.
 If you have used React Class Components before, you may be used to lifecycle methods such as componentDidMount, componentWillUnmount and shouldComponentUpdate. You don't have these in Function Components, so let's see how you can implement them instead.
 
 First of all, you have no constructor in a Function Component. Usually the constructor would have been used in a React Class Component to allocate initial state. As you have seen, you don't need it in a Function Component, because you allocate initial state with the useState hook and set up functions within the Function Component for further business logic:
-```
+```js
 import React, { useState } from 'react';
 const App = () => {
   const [count, setCount] = useState(0);
@@ -325,7 +325,7 @@ export default App;
 ## 13. React Functional Component: Mount ##
 
 Second, there is the mounting lifecycle for React components when they are rendered for the first time. If you want to execute something when a React Function Component did mount, you can use the useEffect hook:
-```
+```js
 import React, { useState, useEffect } from 'react';
 const App = () => {
   const [count, setCount] = useState(0);
@@ -359,7 +359,7 @@ Experiment: If you would leave the second argument of the Effect Hook empty, you
 Every time incoming props or state of the component change, the component triggers a rerender to display the latest status quo which is often derived from the props and state. A render executes everything within the Function Component's body.
 
 Note: In case a Function Component is not updating properly in your application, it's always a good first debugging attempt to console log state and props of the component. If both don't change, there is no new render executed, and hence you don't see a console log of the output in the first place.
-```
+```js
 import React, { useState, useEffect } from 'react';
 const App = () => {
   console.log('Does it render?');
@@ -385,7 +385,7 @@ export default App;
 ```
 
 If you want to act upon a rerender, you can use the Effect Hook again to do something after the component did update:
-```
+```js
 import React, { useState, useEffect } from 'react';
 const App = () => {
   const initialCount = +localStorage.getItem('storageCount') || 0;
@@ -412,7 +412,7 @@ export default App;
 Now every time the Function Component rerenders, the count is stored into the browser's local storage. Every time you fresh the browser page, the count from the browser's local storage, in case there is a count in the storage, is set as initial state.
 
 You can also specify when the Effect Hook should run depending on the variables you pass into the array as second argument. Then every time one of the variables change, the Effect Hook runs. In this case it makes sense to store the count only if the count has changed:
-```
+```js
 import React, { useState, useEffect } from 'react';
 const App = () => {
   const initialCount = +localStorage.getItem('storageCount') || 0;
@@ -447,7 +447,7 @@ Note: A React Function Component force update can be done by using this neat tri
 
 ## 15. PURE REACT FUNCTION COMPONENT ##
 React Class Components offered the possibility to decide whether a component has to rerender or not. It was achieved by using the PureComponent or shouldComponentUpdate to avoid performance bottlenecks in React by preventing rerenders. Let's take the following extended example:
-```
+```js
 import React, { useState } from 'react';
 const App = () => {
   const [greeting, setGreeting] = useState('Hello React!');
@@ -478,7 +478,7 @@ export default App;
 ```
 
 In this case, every time you type something in the input field, the App component updates its state, rerenders, and rerenders the Count component as well. React memo -- which is one of React's top level APIs -- can be used for React Function Components to prevent a rerender when the incoming props of this component haven't changed:
-```
+```js
 import React, { useState, memo } from 'react';
 const App = () => {
   const [greeting, setGreeting] = useState('Hello React!');
@@ -511,7 +511,7 @@ Now, the Count component doesn't update anymore when the user types something in
 
 ## 16. REACT FUNCTION COMPONENT: EXPORT AND IMPORT ##
 Eventually you will separate components into their own files. Since React Components are functions (or classes), you can use the standard import and export statements provided by JavaScript. For instance, you can define and export a component in one file:
-```
+```js
 // src/components/Headline.js
 import React from 'react';
 const Headline = (props) => {
@@ -532,7 +532,7 @@ export default App;
 Note: If a Function Component is not defined, console log your exports and imports to get a better understanding of where you made a mistake. Maybe you used a named export and expected it to be a default export.
 
 If you don't care about the component name by defining the variable, you can keep it as Anonymous Function Component when using a default export on the Function Component:
-```
+```js
 import React from 'react';
 import Headline from './Headline.js';
 export default () => {
@@ -544,7 +544,7 @@ However, when doing it this way, React Dev Tools cannot identify the component b
 
 ## 17. REACT FUNCTION COMPONENT: REF ##
 A React Ref should only be used in rare cases such as accessing/manipulating the DOM manually (e.g. focus element), animations, and integrating third-party DOM libraries (e.g. D3). If you have to use a Ref in a Function Component, you can define it within the component. In the following case, the input field will get focused after the component did mount:
-```
+```js
 import React, { useState, useEffect, useRef } from 'react';
 const App = () => {
   const [greeting, setGreeting] = useState('Hello React!');
@@ -571,7 +571,7 @@ const Input = ({ value, handleChange }) => {
 export default App;
 ```
 However, React Function Components cannot be given refs! If you try the following, the ref will be assigned to the component instance but not to the actual DOM node.
-```
+```js
 // Doesn't work!
 import React, { useState, useEffect, useRef } from 'react';
 const App = () => {
@@ -597,7 +597,7 @@ const Input = ({ value, handleChange, ref }) => (
 export default App;
 ```
 It's not recommended to pass a ref from a Parent Component to a Child Component and that's why the assumption has always been: React Function Components cannot have refs. However, if you need to pass a ref to a Function Component -- because you have to measure the size of a function component's DOM node, for example, or like in this case to focus an input field from the outside -- you can forward the ref:
-```
+```js
 // Does work!
 import React, {
   useState,
@@ -631,7 +631,7 @@ There are a few other things you may want to know about React Refs, so check out
 
 ## 18. REACT FUNCTION COMPONENT: PROPTYPES ##
 PropTypes can be used for React Class Components and Function Components the same way. Once you have defined your component, you can assign it PropTypes to validate the incoming props of a component:
-```
+```js
 import React from 'react';
 import PropTypes from 'prop-types';
 const App = () => {
@@ -649,7 +649,7 @@ export default App;
 Note that you have to install the standalone React prop-types, because it has been removed from the React core library a while ago. If you want to learn more about PropTypes in React, check out the official documentation.
 
 In addition, previously you have seen the usage of default props for a Function Component. For the sake of completeness, this is another one:
-```
+```js
 import React from 'react';
 const App = () => {
   const greeting = 'Hello Function Component!';
@@ -672,7 +672,7 @@ However, if you really want to go all-in with strongly typed components in React
 
 ## 19. REACT FUNCTION COMPONENT: TYPESCRIPT ##
 If you are looking for a type system for your React application, you should give TypeScript for React Components a chance. A strongly typed language like TypeScript comes with many benefits for your developer experience ranging from IDE support to a more robust code base. You may wonder: How much different would a React Function Component with TypeScript be? Check out the following typed component:
-```
+```js
 import React, { useState } from 'react';
 const App = () => {
   const [greeting, setGreeting] = useState(
@@ -707,7 +707,7 @@ This section will not present you any performance benchmark for Class Components
 Since React Hooks have been introduced in React, Function Components are not anymore behind Class Components feature-wise. You can have state, side-effects and lifecycle methods in React Function Components now. That's why I strongly believe React will move more towards Functional Components, because they are more lightweight than Class Components and offer a sophisticated API for reusable yet encapsulated logic with React Hooks.
 
 For the sake of comparison, check out the implementation of the following Class Component vs Functional Component:
-```
+```js
 // Class Component
 class App extends React.Component {
   constructor(props) {
